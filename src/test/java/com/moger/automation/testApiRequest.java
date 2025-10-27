@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import com.moger.automation.util.BuildJson;
 
-public class testApiRequest {
+public class TestApiRequest {
 
     @Test
     public void testPostRequest() {
