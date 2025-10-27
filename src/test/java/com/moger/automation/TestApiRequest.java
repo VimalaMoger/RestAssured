@@ -32,6 +32,7 @@ public class TestApiRequest {
 
         // Validate response body
         if (response.getContentType().contains("application/json")) {
+
             String title = response.jsonPath().getString("title");
             Assert.assertNotNull(title, "Walden");
             System.out.println("Title: " + title);
