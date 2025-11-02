@@ -5,23 +5,20 @@ public class BuildJson {
     //Invalid Rating
     public static String buildJsonRatingInvalid() {
         return "{\n" +
-                "  \"id\": 0,\n" +
-                "  \"title\": \"\",\n" +
-                "  \"image_url\": \"https://images.gr-assets.com/books/1465675526l/16902.jpg\",\n" +
-                "  \"publicationYear\": 1854,\n" +
+                "  \"title\": \"Beginning Python\",\n" +
+                "  \"image_url\": \"https://i0.wp.com/www.jamesrobertpayne.com/wp-content/uploads/2018/02/beginning-python-james-payne.jpg?fit=399%2C500&ssl=1\",\n" +
+                "  \"publicationYear\": 2010,\n" +
                 "  \"publishers\": [\n" +
                 "    {\n" +
-                "      \"id\": 0,\n" +
-                "      \"name\": \"Wilder\"\n" +
+                "      \"name\": \"Wiley Publishing, Inc\"\n" +
                 "    }\n" +
                 "  ],\n" +
                 "  \"authors\": [\n" +
                 "    {\n" +
-                "      \"id\": 0,\n" +
-                "      \"name\": \"Henry David Thoreau\"\n" +
+                "      \"name\": \"James Payne\"\n" +
                 "    }\n" +
                 "  ],\n" +
-                "  \"genre\": \"PHILOSOPHY\",\n" +
+                "  \"genre\": \"TECHNICAL\",\n" +
                 "  \"amazonRating\": 0.3\n" +
                 "}";
     }
@@ -29,23 +26,20 @@ public class BuildJson {
     //Empty Title, when IDs set to zero
     public static String buildJsonEmptyTitle() {
         return "{\n" +
-                "  \"id\": 0,\n" +
                 "  \"title\": \"\",\n" +
-                "  \"image_url\": \"https://images.gr-assets.com/books/1465675526l/16902.jpg\",\n" +
-                "  \"publicationYear\": 1854,\n" +
+                "  \"image_url\": \"https://i0.wp.com/www.jamesrobertpayne.com/wp-content/uploads/2018/02/beginning-python-james-payne.jpg?fit=399%2C500&ssl=1\",\n" +
+                "  \"publicationYear\": 2010,\n" +
                 "  \"publishers\": [\n" +
                 "    {\n" +
-                "      \"id\": 0,\n" +
-                "      \"name\": \"Wilder\"\n" +
+                "      \"name\": \"Wiley Publishing, Inc\"\n" +
                 "    }\n" +
                 "  ],\n" +
                 "  \"authors\": [\n" +
                 "    {\n" +
-                "      \"id\": 0,\n" +
-                "      \"name\": \"Henry David Thoreau\"\n" +
+                "      \"name\": \"James Payne\"\n" +
                 "    }\n" +
                 "  ],\n" +
-                "  \"genre\": \"PHILOSOPHY\",\n" +
+                "  \"genre\": \"TECHNICAL\",\n" +
                 "  \"amazonRating\": 4.3\n" +
                 "}";
     }
@@ -54,22 +48,22 @@ public class BuildJson {
     public static String buildJsonWithId() {
         return "{\n" +
                 "  \"id\": 1,\n" +
-                "  \"title\": \"Walden\",\n" +
-                "  \"image_url\": \"https://images.gr-assets.com/books/1465675526l/16902.jpg\",\n" +
-                "  \"publicationYear\": 1854,\n" +
+                "  \"title\": \"Beginning Python\",\n" +
+                "  \"image_url\": \"https://i0.wp.com/www.jamesrobertpayne.com/wp-content/uploads/2018/02/beginning-python-james-payne.jpg?fit=399%2C500&ssl=1\",\n" +
+                "  \"publicationYear\": 2010,\n" +
                 "  \"publishers\": [\n" +
                 "    {\n" +
                 "      \"id\": 1,\n" +
-                "      \"name\": \"Wilder\"\n" +
+                "      \"name\": \"Wiley Publishing, Inc\"\n" +
                 "    }\n" +
                 "  ],\n" +
                 "  \"authors\": [\n" +
                 "    {\n" +
                 "      \"id\": 1,\n" +
-                "      \"name\": \"Henry David Thoreau\"\n" +
+                "      \"name\": \"James Payne\"\n" +
                 "    }\n" +
                 "  ],\n" +
-                "  \"genre\": \"PHILOSOPHY\",\n" +
+                "  \"genre\": \"TECHNICAL\",\n" +
                 "  \"amazonRating\": 4.3\n" +
                 "}";
     }
@@ -77,41 +71,20 @@ public class BuildJson {
     //without IDs'
     public static String buildJson() {
         return "{\n" +
-                "  \"title\": \"Walden\",\n" +
-                "  \"image_url\": \"https://images.gr-assets.com/books/1465675526l/16902.jpg\",\n" +
-                "  \"publicationYear\": 1854,\n" +
+                "  \"title\": \"Beginning Python\",\n" +
+                "  \"image_url\": \"https://i0.wp.com/www.jamesrobertpayne.com/wp-content/uploads/2018/02/beginning-python-james-payne.jpg?fit=399%2C500&ssl=1\",\n" +
+                "  \"publicationYear\": 2010,\n" +
                 "  \"publishers\": [\n" +
                 "    {\n" +
-                "      \"name\": \"Wilder\"\n" +
+                "      \"name\": \"Wiley Publishing, Inc\"\n" +
                 "    }\n" +
                 "  ],\n" +
                 "  \"authors\": [\n" +
                 "    {\n" +
-                "      \"name\": \"Henry David Thoreau\"\n" +
+                "      \"name\": \"James Payne\"\n" +
                 "    }\n" +
                 "  ],\n" +
-                "  \"genre\": \"PHILOSOPHY\",\n" +
-                "  \"amazonRating\": 4.3\n" +
-                "}";
-    }
-
-    //without IDs'
-    public static String buildJsonWithoutTitle() {
-        return "{\n" +
-                "  \"title\": \"\",\n" +
-                "  \"image_url\": \"https://images.gr-assets.com/books/1465675526l/16902.jpg\",\n" +
-                "  \"publicationYear\": 1854,\n" +
-                "  \"publishers\": [\n" +
-                "    {\n" +
-                "      \"name\": \"Wilder\"\n" +
-                "    }\n" +
-                "  ],\n" +
-                "  \"authors\": [\n" +
-                "    {\n" +
-                "      \"name\": \"Henry David Thoreau\"\n" +
-                "    }\n" +
-                "  ],\n" +
-                "  \"genre\": \"PHILOSOPHY\",\n" +
+                "  \"genre\": \"TECHNICAL\",\n" +
                 "  \"amazonRating\": 4.3\n" +
                 "}";
     }
@@ -119,24 +92,24 @@ public class BuildJson {
     //request parameter is empty
     public static String buildJsonForAnyFieldEmpty() {
         return "{\n" +
-                "  \"id\": 0,\n" +
-                "  \"title\": \"Walden\",\n" +
-                "  \"image_url\": \"https://images.gr-assets.com/books/1465675526l/16902.jpg\",\n" +
-                "  \"publicationYear\": 1854,\n" +
+                "  \"id\": 1,\n" +
+                "  \"title\": \"Beginning Python\",\n" +
+                "  \"image_url\": \"https://i0.wp.com/www.jamesrobertpayne.com/wp-content/uploads/2018/02/beginning-python-james-payne.jpg?fit=399%2C500&ssl=1\",\n" +
+                "  \"publicationYear\": 2010,\n" +
                 "  \"publishers\": [\n" +
                 "    {\n" +
-                "      \"id\": 0,\n" +
-                "      \"name\": \"Wilder\"\n" +
+                "      \"id\": 1,\n" +
+                "      \"name\": \"Wiley Publishing, Inc\"\n" +
                 "    }\n" +
                 "  ],\n" +
                 "  \"authors\": [\n" +
                 "    {\n" +
-                "      \"id\": 0,\n" +
+                "      \"id\": 1,\n" +
                 "      \"name\": \"\"\n" +
                 "    }\n" +
                 "  ],\n" +
-                "  \"genre\": \"PHILOSOPHY\",\n" +
-                "  \"amazonRating\": 0.1\n" +
+                "  \"genre\": \"TECHNICAL\",\n" +
+                "  \"amazonRating\": 4.3\n" +
                 "}";
     }
 }

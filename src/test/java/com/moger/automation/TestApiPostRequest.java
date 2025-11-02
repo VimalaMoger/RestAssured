@@ -7,6 +7,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import com.moger.automation.util.BuildJson;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class TestApiPostRequest {
 
@@ -49,20 +52,18 @@ public class TestApiPostRequest {
         }
     }
 
-    //Post a new request
+    //Post a new request using external file
     @Test
-    public void testPostRequestNoIds() {
+    public void testPostRequestNoIds() throws IOException {
         // Base URI
         RestAssured.baseURI = "https://book-v9.onrender.com";
 
-        Gson gson = new Gson();
-        Object book = gson.fromJson(BuildJson.buildJson(), Object.class);
-
         // Send POST request
+        // Reading static Json from an external file
         Response response = given()
                 //.log().all()
                 .headers("Content-Type", "application/json")
-                .body(book)
+                .body(new String(Files.readAllBytes((Paths.get("C:\\Users\\mvmgr\\Documents\\automation\\buildBook.json")))))
                 .when().post("api/books")
                 .then()
                 //.log().all()
@@ -73,7 +74,7 @@ public class TestApiPostRequest {
         // Validate response body
         if (response.getContentType().contains("application/json")) {
             String title = response.jsonPath().getString("title");
-            Assert.assertNotNull(title, "Walden");
+            Assert.assertNotNull(title, "James Payne");
             System.out.println("Title: " + title);
         }
     }
@@ -119,7 +120,7 @@ public class TestApiPostRequest {
         // Send POST request
         Response response = given()
                 //.log().all()
-                .headers("Content-Type", "application/json")
+                .header("Content-Type", "application/json")
                 .body(book)
                 .when().post("api/books")
                 .then()
@@ -161,7 +162,7 @@ public class TestApiPostRequest {
         // Validate response body
         if (response.getContentType().contains("application/json")) {
             String detail = response.jsonPath().getString("detail");
-            Assert.assertNotNull(detail, "Failed to read request");
+            Assert.assertEquals(detail, "Failed to read request");
         }
     }
 }

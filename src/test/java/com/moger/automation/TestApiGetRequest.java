@@ -1,7 +1,7 @@
 package com.moger.automation;
 
 import com.google.gson.Gson;
-import com.moger.automation.util.UpdateJson;
+import com.moger.automation.util.BuildJson;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -61,9 +61,6 @@ public class TestApiGetRequest {
 
         // Base URI
         RestAssured.baseURI = "https://book-v9.onrender.com";
-
-        Gson gson = new Gson();
-        Object book = gson.fromJson(UpdateJson.buildJson(), Object.class);
 
         //Path variable
         Long id = -2L;

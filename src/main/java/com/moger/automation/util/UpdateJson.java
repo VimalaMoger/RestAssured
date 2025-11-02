@@ -2,7 +2,7 @@ package com.moger.automation.util;
 
 public class UpdateJson {
 
-    public static String buildJson() {
+    public static String buildJson(double rating) {
 
         return "{\n" +
                 "  \"title\": \"Walden\",\n" +
@@ -19,7 +19,7 @@ public class UpdateJson {
                 "    }\n" +
                 "  ],\n" +
                 "  \"genre\": \"PHILOSOPHY\",\n" +
-                "  \"amazonRating\": 5\n" +
+                "  \"amazonRating\": "+rating+"\n" +
                 "}";
 
     }

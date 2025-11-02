@@ -5,19 +5,20 @@ import com.moger.automation.util.UpdateJson;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 
 public class TestApiUpdateRequest {
 
-    @Test
-    public void testUpdateRequestValidId() {
+    @Test (dataProvider = "rating")
+    public void testUpdateRequestValidId(double val) {
 
         // Base URI
         RestAssured.baseURI = "https://book-v9.onrender.com";
 
         Gson gson = new Gson();
-        Object book = gson.fromJson(UpdateJson.buildJson(), Object.class);
+        Object book = gson.fromJson(UpdateJson.buildJson(val), Object.class);
 
         //Path variable
         Long id = 1L;
@@ -45,9 +46,9 @@ public class TestApiUpdateRequest {
 
             Assert.assertEquals(response.contentType(), "text/html;charset=UTF-8");
             System.out.println(response.contentType());
-            Assert.assertEquals(response.htmlPath().getString("html.body.p[0].span"), "404 NOT_FOUND");
-            Assert.assertEquals(response.htmlPath().getString("html.body.p[1].span"), "Book with id 1 not found");
-            Assert.assertEquals(response.htmlPath().getString("html.body.p[2].span"), "BookNotFoundException");
+            Assert.assertEquals(response.htmlPath().getString("html.body.p[0].span"), "400 BAD_REQUEST");
+            Assert.assertEquals(response.htmlPath().getString("html.body.p[1].span"), "Rating value must be between 1 and 5 inclusive");
+            Assert.assertEquals(response.htmlPath().getString("html.body.p[2].span"), "MethodArgumentNotValidException");
             Assert.assertEquals(response.getHeaders().getValue("server"), "cloudflare");
         }
     }
@@ -59,7 +60,7 @@ public class TestApiUpdateRequest {
         RestAssured.baseURI = "https://book-v9.onrender.com";
 
         Gson gson = new Gson();
-        Object book = gson.fromJson(UpdateJson.buildJson(), Object.class);
+        Object book = gson.fromJson(UpdateJson.buildJson(5), Object.class);
 
         //Path variable
         Long id = 11L;
@@ -93,5 +94,10 @@ public class TestApiUpdateRequest {
             Assert.assertEquals(response.htmlPath().getString("html.body.p[2].span"), "BookNotFoundException");
             Assert.assertEquals(response.getHeaders().getValue("server"), "cloudflare");
         }
+    }
+
+    @DataProvider(name = "rating")
+    public Object[][] getData() {
+        return new Object[][]{{5.0}, {3.5}, {2.0}, {0.7}};
     }
 }
