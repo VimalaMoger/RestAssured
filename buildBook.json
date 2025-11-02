@@ -1,0 +1,20 @@
+{
+  "id": 0,
+  "title": "Beginning Python",
+  "image_url": "https://i0.wp.com/www.jamesrobertpayne.com/wp-content/uploads/2018/02/beginning-python-james-payne.jpg?fit=399%2C500&ssl=1",
+  "publicationYear": 2010,
+  "publishers": [
+    {
+      "id": 0,
+      "name": "Wiley Publishing, Inc"
+    }
+  ],
+  "authors": [
+    {
+      "id": 0,
+      "name": "James Payne"
+    }
+  ],
+  "genre": "TECHNICAL",
+  "amazonRating": 4.3
+}
