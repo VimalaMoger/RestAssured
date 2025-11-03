@@ -89,7 +89,7 @@ public class JiraBugCreation {
         Response response = given()
                 //.log().all()
                 .headers(headers)
-                .body(new String(Files.readAllBytes((Paths.get("C:\\Users\\mvmgr\\Documents\\automation\\buildIssue.json")))))
+                .body(new String(Files.readAllBytes((Paths.get("buildIssue.json")))))
                 .when().post("rest/api/3/issue")
                 .then()
                 //.log().all()
