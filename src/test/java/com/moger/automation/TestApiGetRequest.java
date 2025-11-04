@@ -1,7 +1,6 @@
 package com.moger.automation;
 
-import com.google.gson.Gson;
-import com.moger.automation.util.BuildJson;
+
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;

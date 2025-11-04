@@ -1,20 +1,12 @@
 package com.moger.automation;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.reflect.TypeToken;
+import com.moger.automation.pojos.Book;
 import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.io.Reader;
-import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-
 import static io.restassured.RestAssured.given;
 
 public class TestApiGetAllRequest {
@@ -37,13 +29,11 @@ public class TestApiGetAllRequest {
 
         // Validate response body
 
-        List<Object> list = response.jsonPath().getList("authors");
-        //for(Object s : list)
-        //    System.out.println(s);
-        System.out.println(list.get(3));
-
         // Extract JSON array/object size
         int size = response.jsonPath().getList("id").size();
+
+        List<Book> books = Arrays.asList(response.getBody().as(Book[].class));
+        Assert.assertEquals(books.size(), size);
 
         // Validate the size
         //Assert.assertEquals(size, 1);

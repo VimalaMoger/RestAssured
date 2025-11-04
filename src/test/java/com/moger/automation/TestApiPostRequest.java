@@ -1,12 +1,13 @@
 package com.moger.automation;
 
 import com.google.gson.Gson;
-import io.restassured.RestAssured;
+import com.moger.automation.pojos.Book;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import com.moger.automation.util.BuildJson;
+import specBuider.CreateSpecBuilder;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -16,21 +17,19 @@ public class TestApiPostRequest {
     @Test
     public void testPostRequest() {
 
-        // Base URI
-        RestAssured.baseURI = "https://book-v9.onrender.com";
 
         Gson gson = new Gson();
-        Object book = gson.fromJson(BuildJson.buildJsonWithId(), Object.class);
+        Book book = gson.fromJson(BuildJson.buildJsonWithId(), Book.class);
 
         // Send POST request
         Response response = given()
                 //.log().all()
-                .header("Content-Type", "application/json")
+                .spec(CreateSpecBuilder.getRequestSpecBuilderPost())
                 .body(book)
                 .when().post("api/books")
                 .then()
                 //.log().all()
-                .statusCode(200) // Assert status code
+                .spec(CreateSpecBuilder.getResponseSpecBuilder())// Assert status code
                 .extract()
                 .response();
 
@@ -40,6 +39,8 @@ public class TestApiPostRequest {
             String title = response.jsonPath().getString("title");
             Assert.assertNotNull(title, "Walden");
             System.out.println("Title: " + title);
+
+
 
         } else {
 
@@ -55,48 +56,48 @@ public class TestApiPostRequest {
     //Post a new request using external file
     @Test
     public void testPostRequestNoIds() throws IOException {
-        // Base URI
-        RestAssured.baseURI = "https://book-v9.onrender.com";
 
         // Send POST request
         // Reading static Json from an external file
         Response response = given()
                 //.log().all()
-                .headers("Content-Type", "application/json")
-                .body(new String(Files.readAllBytes((Paths.get("C:\\Users\\mvmgr\\Documents\\automation\\buildBook.json")))))
+                .spec(CreateSpecBuilder.getRequestSpecBuilderPost())
+                .body(new String(Files.readAllBytes((Paths.get("buildBook.json")))))
                 .when().post("api/books")
                 .then()
                 //.log().all()
-                .statusCode(200) // Assert status code
+                .spec(CreateSpecBuilder.getResponseSpecBuilder())
                 .extract()
                 .response();
 
         // Validate response body
         if (response.getContentType().contains("application/json")) {
             String title = response.jsonPath().getString("title");
-            Assert.assertNotNull(title, "James Payne");
+            Assert.assertEquals(title, "Beginning Python");
+
             System.out.println("Title: " + title);
         }
+
+        Book book = response.as(Book.class);
+        Assert.assertEquals(book.getAuthors().get(0).getName(), "James Payne");
     }
 
     //Empty title
     @Test
     public void testPostRequestEmptyTitle() {
-        // Base URI
-        RestAssured.baseURI = "https://book-v9.onrender.com";
 
         Gson gson = new Gson();
-        Object book = gson.fromJson(BuildJson.buildJsonEmptyTitle(), Object.class);
+        Book book = gson.fromJson(BuildJson.buildJsonEmptyTitle(), Book.class);
 
         // Send POST request
         Response response = given()
                 //.log().all()
-                .headers("Content-Type", "application/json")
+                .spec(CreateSpecBuilder.getRequestSpecBuilderPost())
                 .body(book)
                 .when().post("api/books")
                 .then()
                 //.log().all()
-                .statusCode(200) // Assert status code
+                .spec(CreateSpecBuilder.getResponseSpecBuilder())
                 .extract()
                 .response();
 
@@ -111,21 +112,19 @@ public class TestApiPostRequest {
     //Rating Invalid
     @Test
     public void testPostRequestRatingInvalid() {
-        // Base URI
-        RestAssured.baseURI = "https://book-v9.onrender.com";
 
         Gson gson = new Gson();
-        Object book = gson.fromJson(BuildJson.buildJsonRatingInvalid(), Object.class);
+        Book book = gson.fromJson(BuildJson.buildJsonRatingInvalid(), Book.class);
 
         // Send POST request
         Response response = given()
                 //.log().all()
-                .header("Content-Type", "application/json")
+                .spec(CreateSpecBuilder.getRequestSpecBuilderPost())
                 .body(book)
                 .when().post("api/books")
                 .then()
                 //.log().all()
-                .statusCode(200) // Assert status code
+                .spec(CreateSpecBuilder.getResponseSpecBuilder()) // Assert status code
                 .extract()
                 .response();
 
@@ -141,21 +140,19 @@ public class TestApiPostRequest {
     //Author name is missing value
     @Test
     public void testPostRequestEmptyField() {
-        // Base URI
-        RestAssured.baseURI = "https://book-v9.onrender.com";
 
         Gson gson = new Gson();
-        Object book = gson.fromJson(BuildJson.buildJsonForAnyFieldEmpty(), Object.class);
+        Book book = gson.fromJson(BuildJson.buildJsonForAnyFieldEmpty(), Book.class);
 
         // Send POST request
         Response response = given()
                 //.log().all()
-                .headers("Content-Type", "application/json")
+                .spec(CreateSpecBuilder.getRequestSpecBuilderPost())
                 .body(book)
                 .when().post("api/books")
                 .then()
                 //.log().all()
-                .statusCode(200) // Assert status code
+                .spec(CreateSpecBuilder.getResponseSpecBuilder()) // Assert status code
                 .extract()
                 .response();
 

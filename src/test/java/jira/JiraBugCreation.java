@@ -4,7 +4,6 @@ import com.moger.automation.util.JiraIssuePayload;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import com.moger.automation.util.KeyValues;
-import org.junit.jupiter.api.Order;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -29,12 +28,14 @@ public class JiraBugCreation {
     // Payload (issue details)
     String payload = JiraIssuePayload.payload();
 
+    @BeforeAll
+    public static void setup() {
+        // Base URI
+        RestAssured.baseURI = KeyValues.getBaseUri();
+    }
 
     @Test
     public void testPostRequest() {
-
-        //BaseURI
-        RestAssured.baseURI = KeyValues.getBaseUri();
 
         // Headers
         headers.put("Content-Type", "application/json");
@@ -76,10 +77,8 @@ public class JiraBugCreation {
 
 
     //Post a new issue using external file
-    @Test(dependsOnMethods = {"testPostRequest"})
+    @Test(dependsOnMethods = {"testPostRequest"}, enabled = false)
     public void testPostIssueRequest() throws IOException {
-        // Base URI
-        RestAssured.baseURI = KeyValues.getBaseUri();
 
         // Headers
         headers.put("Content-Type", "application/json");
@@ -101,9 +100,6 @@ public class JiraBugCreation {
     //Get request
     @Test(dependsOnMethods = {"testPostIssueRequest"})
     public void testGetRequest() {
-
-        //BaseURI
-        RestAssured.baseURI = KeyValues.getBaseUri();
 
         String issueId = "10041";
 
@@ -136,9 +132,6 @@ public class JiraBugCreation {
     @Test
     public void testUpdateRequest() {
 
-        //BaseURI
-        RestAssured.baseURI = KeyValues.getBaseUri();
-
         // Headers
         headers.put("Content-Type", "application/json");
         headers.put("Authorization", "Basic " + apiToken);
@@ -163,7 +156,7 @@ public class JiraBugCreation {
     @Test(dataProvider = "key", dependsOnMethods = {"testUpdateRequest"})
     public void testDeleteRequest(String issueKey) {
 
-        //BaseURI
+        // Base URI
         RestAssured.baseURI = KeyValues.getBaseUri();
 
         // Headers
@@ -190,6 +183,6 @@ public class JiraBugCreation {
     //Delete issues with set of issue keys
     @DataProvider(name = "key")
     public Object[][] returnValues() {
-        return new Object[][]{{"SCRUM-25"}, {"SCRUM-24"}};
+        return new Object[][]{{"SCRUM-53"}, {"SCRUM-52"}};
     }
 }

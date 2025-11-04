@@ -8,11 +8,17 @@ Dependencies added:
 
 
 ### Tasks
-- Parameterize the API Tests with multiple data sets using @DataProvider
-- Read static Json from an external file
-  - Jira REST APIs - Send File Attachment
-  > Issue creation, update, GET and delete request
 
+- Parameterize the API Tests with multiple data sets 
+- Read static Json from an external file
+- Pojo classes implementation
+- Spec builder creation
+
+
+
+
+- Jira REST APIs test
+  	> Issue creation, update, GET and delete request, send File Attachment
 
 Run tests:
    

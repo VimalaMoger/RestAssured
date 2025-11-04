@@ -1,12 +1,14 @@
 package com.moger.automation;
 
 import com.google.gson.Gson;
+import com.moger.automation.pojos.Book;
 import com.moger.automation.util.UpdateJson;
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import specBuider.CreateSpecBuilder;
+
 import static io.restassured.RestAssured.given;
 
 public class TestApiUpdateRequest {
@@ -14,11 +16,8 @@ public class TestApiUpdateRequest {
     @Test (dataProvider = "rating")
     public void testUpdateRequestValidId(double val) {
 
-        // Base URI
-        RestAssured.baseURI = "https://book-v9.onrender.com";
-
         Gson gson = new Gson();
-        Object book = gson.fromJson(UpdateJson.buildJson(val), Object.class);
+        Book book = gson.fromJson(UpdateJson.buildJson(val), Book.class);
 
         //Path variable
         Long id = 1L;
@@ -26,13 +25,12 @@ public class TestApiUpdateRequest {
         // Send UPDATE request with path variable
         Response response = given()
                 //.log().all()
-                .pathParam("id", id)  //Set path variable
-                .header("Content-Type", "application/json")  //Set header
+                .spec(CreateSpecBuilder.getRequestSpecBuilderPost().pathParam("id", id))   //Set path variable
                 .body(book)
                 .when().put("api/books/{id}")   //path variable in endpoint
                 .then()
                 //.log().all()
-                .statusCode(200) // Assert status code
+                .spec(CreateSpecBuilder.getResponseSpecBuilder()) // Assert status code
                 .extract()
                 .response();
 
@@ -56,11 +54,8 @@ public class TestApiUpdateRequest {
     @Test
     public void testUpdateRequestInvalidId() {
 
-        // Base URI
-        RestAssured.baseURI = "https://book-v9.onrender.com";
-
         Gson gson = new Gson();
-        Object book = gson.fromJson(UpdateJson.buildJson(5), Object.class);
+        Book book = gson.fromJson(UpdateJson.buildJson(5), Book.class);
 
         //Path variable
         Long id = 11L;
@@ -68,13 +63,12 @@ public class TestApiUpdateRequest {
         // Send UPDATE request with path variable
         Response response = given()
                 //.log().all()
-                .pathParam("id", id)  //Set path variable
-                .header("Content-Type", "application/json")  //Set header
+                .spec(CreateSpecBuilder.getRequestSpecBuilderPost().pathParam("id", id))   //Set path variable
                 .body(book)
                 .when().put("api/books/{id}")//Used path variable in endpoint
                 .then()
                 //.log().all()
-                .statusCode(200) // Assert status code
+                .spec(CreateSpecBuilder.getResponseSpecBuilder()) // Assert status code
                 .extract()
                 .response();
 
