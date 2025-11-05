@@ -13,7 +13,7 @@ Dependencies added:
 - Read static Json from an external file
 - Pojo classes implementation
 - Spec builder creation
-
+- Integrating Excel with Rest Assured - Data driven
 
 
 
