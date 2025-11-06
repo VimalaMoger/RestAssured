@@ -72,7 +72,7 @@ public class BuildJson {
     public static String buildJson() {
         return "{\n" +
                 "  \"title\": \"Beginning Python\",\n" +
-                "  \"image_url\": \"https://i0.wp.com/www.jamesrobertpayne.com/wp-content/uploads/2018/02/beginning-python-james-payne.jpg?fit=399%2C500&ssl=1\",\n" +
+                "  \"image_url\": \"https://i0.wp.com/www.jamesrobertpayne.com/wp-content/uploads/2018/02/beginning-python-james-payne.jpg\",\n" +
                 "  \"publicationYear\": 2010,\n" +
                 "  \"publishers\": [\n" +
                 "    {\n" +
