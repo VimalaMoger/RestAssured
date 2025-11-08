@@ -14,8 +14,9 @@ Dependencies added:
 - Pojo classes implementation
 - Spec builder creation
 - Integrating Excel with Rest Assured - Data driven
+- Rest Assured with Cucumber BDD
 
-
+<br>
 
 - Jira REST APIs test
   	> Issue creation, update, GET and delete request, send File Attachment
