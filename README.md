@@ -3,7 +3,7 @@
 
 Dependencies added:
 ```text
-    spring-boot-starter-web, spring-boot-devtools, Rest Assured, Hamcrest Matchers, TestNG, Gson library
+    spring-boot-starter-web, spring-boot-devtools, Rest Assured, Hamcrest Matchers, TestNG, Gson library, io.cucumber, apache.poi, jackson library, Lombok
 ```
 
 
