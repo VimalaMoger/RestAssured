@@ -3,7 +3,7 @@
 
 Dependencies added:
 ```text
-    spring-boot-starter-web, spring-boot-devtools, Rest Assured, Hamcrest Matchers, TestNG, Gson library
+    spring-boot-starter-web, spring-boot-devtools, Rest Assured, Hamcrest Matchers, TestNG, Gson library, io.cucumber, apache.poi, jackson library, Lombok
 ```
 
 
@@ -14,8 +14,9 @@ Dependencies added:
 - Pojo classes implementation
 - Spec builder creation
 - Integrating Excel with Rest Assured - Data driven
+- Rest Assured with Cucumber BDD
 
-
+<br>
 
 - Jira REST APIs test
   	> Issue creation, update, GET and delete request, send File Attachment
