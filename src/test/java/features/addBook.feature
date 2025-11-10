@@ -1,6 +1,6 @@
 Feature: Book CRUD operations
     As an API consumer
-    I want to create, read, update, and delete users
+    I want to create, read, update, and delete books
     So that I can manage book data
 
     @addBook
@@ -13,8 +13,12 @@ Feature: Book CRUD operations
     @updateBook
     Scenario: Verify if a book successfully updated using update book service API
         Given Add Update Book payload and Id
-        When Send a PUT HTTP request
+        When Send a PUT HTTP request with <id>
         Then Receive a success response with status code "200"
+
+        Examples:
+                 | id |
+                 | 12 |
 
     @getBook
     Scenario Outline: Send a valid request to get book details

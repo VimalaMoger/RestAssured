@@ -6,7 +6,7 @@ import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/java/features", glue={"stepDefinition"}, tags = "@deleteBook")
+@CucumberOptions(features = "src/test/java/features", glue={"stepDefinition"}, tags = "@updateBook")
 public class TestRunner {
 
 }

@@ -23,10 +23,6 @@ public class StepDefinition {
     RequestSpecification req;
     Book book;
 
-    //Path variable
-    private final Long id = 1L;
-
-
     //Post request
     @Given("Add Book payload")
     public void add_book_payload() throws FileNotFoundException {
@@ -57,8 +53,8 @@ public class StepDefinition {
                 .body(book);
     }
 
-    @When("Send a PUT HTTP request")
-    public void send_a_put_http_request() {
+    @When("Send a PUT HTTP request with {int}")
+    public void send_a_put_http_request(Integer id) {
 
         response = req.pathParam("id", id).when().put("api/books/{id}");
     }
