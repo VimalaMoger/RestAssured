@@ -10,10 +10,7 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
 import specBuider.CreateSpecBuilder;
-
 import java.io.FileNotFoundException;
-import java.util.Objects;
-
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

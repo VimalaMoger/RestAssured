@@ -13,8 +13,8 @@ Dependencies added:
 - Read static Json from an external file
 - Pojo classes implementation
 - Spec builder creation
-- Integrating Excel with Rest Assured - Data driven
-- Rest Assured with Cucumber BDD
+- Integrate Excel with Rest Assured - Data driven
+- Integrate Cucumber with Rest Assured
 
 <br>
 
@@ -24,3 +24,29 @@ Dependencies added:
 Run tests:
    
 ![restassured.PNG](assets/restassured.PNG)
+
+### Maven test:
+
+```
+    mvn clean install
+    mvn clean test
+    mvn test -Dcucumber.options="--tags @addBook"
+    mvn clean test -Dcucumber.filter.tags="@getBook"
+    mvn test -Dcucumber.features="src/test/resources/features"
+```
+
+![cucumberTest](assets/cucumberMavenRun.PNG)
+
+
+
+### Tips:
+
+- Diff between mvn clean install and mvn clean test
+    > mvn clean install executes both clean and install phase ``` clean phase\install phase includes validate\compile\test\package\verify\install ```
+    > mvn test includes only phases up to test ``` validate\compile\test ```
+- Dependency conflicts (JUnit vs. TestNG)
+    > Maven Surefire plugin confused about which framework to use
+      - Required both dependencies in this project
+        - Solution: Force the Surefire provider to explicitly configure the maven-surefire-plugin to use JUnit
+        - included org.apache.maven.surefire dependency in pom.xml plugin
+
