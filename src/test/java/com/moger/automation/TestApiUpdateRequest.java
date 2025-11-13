@@ -9,12 +9,14 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import specBuider.CreateSpecBuilder;
 
+import java.io.FileNotFoundException;
+
 import static io.restassured.RestAssured.given;
 
 public class TestApiUpdateRequest {
 
     @Test (dataProvider = "rating")
-    public void testUpdateRequestValidId(double val) {
+    public void testUpdateRequestValidId(double val) throws FileNotFoundException {
 
         Gson gson = new Gson();
         Book book = gson.fromJson(UpdateJson.buildJson(val), Book.class);
@@ -52,7 +54,7 @@ public class TestApiUpdateRequest {
     }
 
     @Test
-    public void testUpdateRequestInvalidId() {
+    public void testUpdateRequestInvalidId() throws FileNotFoundException {
 
         Gson gson = new Gson();
         Book book = gson.fromJson(UpdateJson.buildJson(5), Book.class);

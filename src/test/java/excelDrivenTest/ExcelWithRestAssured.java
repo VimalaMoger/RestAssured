@@ -13,6 +13,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.testng.Assert;
 import specBuider.CreateSpecBuilder;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.stream.IntStream;
 import static io.restassured.RestAssured.given;
@@ -37,7 +38,7 @@ public class ExcelWithRestAssured {
     }
 
     @Test
-    public void testDataFromExcel () throws JsonProcessingException {
+    public void testDataFromExcel () throws JsonProcessingException, FileNotFoundException {
 
         Response response = given()
                 .spec(CreateSpecBuilder.getRequestSpecBuilderPost())

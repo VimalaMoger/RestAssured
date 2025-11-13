@@ -8,6 +8,8 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import com.moger.automation.util.BuildJson;
 import specBuider.CreateSpecBuilder;
+
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -15,7 +17,7 @@ import java.nio.file.Paths;
 public class TestApiPostRequest {
 
     @Test
-    public void testPostRequest() {
+    public void testPostRequest() throws FileNotFoundException {
 
 
         Gson gson = new Gson();
@@ -53,6 +55,34 @@ public class TestApiPostRequest {
         }
     }
 
+    @Test
+    public void testPostRequestValidData() throws FileNotFoundException {
+
+
+        Gson gson = new Gson();
+        Book book = gson.fromJson(BuildJson.buildJson(), Book.class);
+
+        // Send POST request
+        Response response = given()
+                //.log().all()
+                .spec(CreateSpecBuilder.getRequestSpecBuilderPost())
+                .body(book)
+                .when().post("api/books")
+                .then()
+                //.log().all()
+                .spec(CreateSpecBuilder.getResponseSpecBuilder())// Assert status code
+                .extract()
+                .response();
+
+        // Validate response body
+        if (response.getContentType().contains("application/json")) {
+
+            String title = response.jsonPath().getString("title");
+            Assert.assertNotNull(title, "Walden");
+            System.out.println("Title: " + title);
+        }
+    }
+
     //Post a new request using external file
     @Test
     public void testPostRequestNoIds() throws IOException {
@@ -84,7 +114,7 @@ public class TestApiPostRequest {
 
     //Empty title
     @Test
-    public void testPostRequestEmptyTitle() {
+    public void testPostRequestEmptyTitle() throws FileNotFoundException {
 
         Gson gson = new Gson();
         Book book = gson.fromJson(BuildJson.buildJsonEmptyTitle(), Book.class);
@@ -111,7 +141,7 @@ public class TestApiPostRequest {
 
     //Rating Invalid
     @Test
-    public void testPostRequestRatingInvalid() {
+    public void testPostRequestRatingInvalid() throws FileNotFoundException {
 
         Gson gson = new Gson();
         Book book = gson.fromJson(BuildJson.buildJsonRatingInvalid(), Book.class);
@@ -139,7 +169,7 @@ public class TestApiPostRequest {
 
     //Author name is missing value
     @Test
-    public void testPostRequestEmptyField() {
+    public void testPostRequestEmptyField() throws FileNotFoundException {
 
         Gson gson = new Gson();
         Book book = gson.fromJson(BuildJson.buildJsonForAnyFieldEmpty(), Book.class);

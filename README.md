@@ -12,7 +12,7 @@ Dependencies added:
 - Parameterize the API Tests with multiple data sets 
 - Read static Json from an external file
 - Pojo classes implementation
-- Spec builder creation
+- Spec builder creation and logging
 - Integrate Excel with Rest Assured - Data driven
 - Integrate Cucumber with Rest Assured
 

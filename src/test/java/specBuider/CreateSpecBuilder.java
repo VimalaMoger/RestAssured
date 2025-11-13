@@ -1,10 +1,15 @@
 package specBuider;
 
-import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 
 public class CreateSpecBuilder {
 
@@ -15,12 +20,16 @@ public class CreateSpecBuilder {
     static ResponseSpecBuilder responseSpecBuilder = new ResponseSpecBuilder();
 
 
-    public static RequestSpecification getRequestSpecBuilderPost () {
+    public static RequestSpecification getRequestSpecBuilderPost () throws FileNotFoundException {
+
+        PrintStream file = new PrintStream(new FileOutputStream("logging.txt"));
 
         //Add configuration
         requestSpecBuilder.setBaseUri("https://book-v9.onrender.com");    // Base URI
         requestSpecBuilder.addHeader("Content-Type", "application/json");  //Set header
-        //requestSpecBuilder.setContentType("application/json");
+
+        requestSpecBuilder.addFilter(RequestLoggingFilter.logRequestTo(file));
+        requestSpecBuilder.addFilter(ResponseLoggingFilter.logResponseTo(file));
 
         //Build the RequestSpecification
         return requestSpecBuilder.build();
