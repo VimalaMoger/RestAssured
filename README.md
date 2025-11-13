@@ -25,10 +25,9 @@ Run tests:
    
 ![restassured.PNG](assets/restassured.PNG)
 
-### Maven test:
+### Cucumber tests from Maven cmd commands:
 
 ```
-    mvn clean install
     mvn clean test
     mvn test -Dcucumber.options="--tags @addBook"
     mvn clean test -Dcucumber.filter.tags="@getBook"
