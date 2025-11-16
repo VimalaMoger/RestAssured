@@ -15,6 +15,7 @@ Dependencies added:
 - Spec builder creation and logging
 - Integrate Excel with Rest Assured - Data driven
 - Integrate Cucumber with Rest Assured
+- Maven mojo for the cucumber-reporting
 
 <br>
 
@@ -37,12 +38,19 @@ Run tests:
 ![cucumberTest](assets/cucumberMavenRun.PNG)
 
 
+### Generated cucumber HTML reporting with plugin configuration
+
+- Updated RunnerTest class with plugin configuration
+- Added maven-cucumber-reporting plugin to pom.xml
+- Ran mvn clean test to generate the Cucumber report file
+
+![testReport](target/cucumber-report-html/cucumber-html-reports/feature-overview.html)
 
 ### Tips:
 
 - Diff between mvn clean install and mvn clean test
-    > mvn clean install executes both clean and install phase ``` clean phase\install phase includes validate\compile\test\package\verify\install ```
-    > mvn test includes only phases up to test ``` validate\compile\test ```
+    > _mvn clean install_ executes both clean and install phase ``` clean phase\install phase includes validate\compile\test\package\verify\install ```
+    > _mvn test_ includes only phases up to test ``` validate\compile\test ```
 - Dependency conflicts (JUnit vs. TestNG)
     > Maven Surefire plugin confused about which framework to use
       - Required both dependencies in this project

@@ -18,7 +18,7 @@ Feature: Book CRUD operations
 
         Examples:
                  | id |
-                 | 12 |
+                 | 5 |
 
     @getBook
     Scenario Outline: Send a valid request to get book details
@@ -28,9 +28,9 @@ Feature: Book CRUD operations
         And "title" in response body is "<title>"
 
         Examples:
-                  | id       | statusCode          | title                            |
-                  | 1        | 200                 | Walden                           |
-                  | 2        | 200                 | Self-Reliance and Other Essays   |
+                  | id       | statusCode          | title                                |
+                  | 1        | 200                 | Walden                               |
+                  | 2        | 200                 | Self-Reliance and Other Essays       |
 
     @deleteBook
     Scenario Outline: Verify if a book successfully deleted using delete book service API
@@ -40,6 +40,6 @@ Feature: Book CRUD operations
         And "message" in response body is "<message>"
 
         Examples:
-                   | id  | statusCode | message                   |
-                   | 10   | 200        | Book with id 10 is deleted |
-                   | 11   | 200        | Book with id 11 is deleted |
+                   | id  | statusCode | message                    |
+                   | 3   | 200        | Book with id 3 is deleted  |
+                   | 4   | 200        | Book with id 4 is deleted  |
