@@ -38,7 +38,7 @@ Run tests:
 ![cucumberTest](assets/cucumberMavenRun.PNG)
 
 
-### Generated cucumber HTML reporting with plugin configuration
+### Generated Cucumber HTML reporting with plugin configuration
 
 - Updated RunnerTest class with plugin configuration
 - Added maven-cucumber-reporting plugin to pom.xml
