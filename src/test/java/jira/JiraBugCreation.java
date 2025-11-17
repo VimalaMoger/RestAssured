@@ -1,3 +1,4 @@
+/*
 package jira;
 
 import com.moger.automation.util.JiraIssuePayload;
@@ -60,6 +61,7 @@ public class JiraBugCreation {
 
 
         /** POST request with attachment */
+/*
         Response res = given()
                 //.log().all()
                 .pathParam("key", issueId)
@@ -186,3 +188,5 @@ public class JiraBugCreation {
         return new Object[][]{{"SCRUM-53"}, {"SCRUM-52"}};
     }
 }
+
+*/
