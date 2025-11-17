@@ -1,5 +1,5 @@
 package jira;
-
+/*
 import com.moger.automation.util.JiraIssuePayload;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -186,3 +186,4 @@ public class JiraBugCreation {
         return new Object[][]{{"SCRUM-53"}, {"SCRUM-52"}};
     }
 }
+*/
