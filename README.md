@@ -44,7 +44,7 @@ Run tests:
 - Added maven-cucumber-reporting plugin to pom.xml
 - Ran mvn clean test to generate the Cucumber report file
 
-![testReport](target/cucumber-report-html/cucumber-html-reports/feature-overview.html)
+![testReport](assets/cucumberTestReporting.PNG)
 
 ### Tips:
 
