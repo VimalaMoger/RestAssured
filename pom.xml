@@ -169,7 +169,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
+                <!-- <version>${maven-compiler-plugin.version}</version> -->
+				<!-- <version>3.5.1</version> -->
+				<version>3.8.0</version>
                 <configuration>
                     <annotationProcessorPaths>
                         <path>
