@@ -188,5 +188,4 @@ public class JiraBugCreation {
         return new Object[][]{{"SCRUM-53"}, {"SCRUM-52"}};
     }
 }
-
 */
