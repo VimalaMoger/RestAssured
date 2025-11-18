@@ -199,6 +199,7 @@
                     </includes>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -220,8 +221,8 @@
                         </goals>
                         <configuration>
                             <projectName>CucumberWebGui</projectName>
-                            <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
-                            <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
+                            <outputDirectory>target/cucumber-report-html</outputDirectory>
+                            <cucumberOutput>target/cucumber.json</cucumberOutput>
                         </configuration>
                     </execution>
                 </executions>

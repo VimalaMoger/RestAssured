@@ -26,19 +26,20 @@ jobs:
 
       # 3. Install dependencies & run tests
       - name: Run API tests
-        run: mvn clean verify
+        run: mvn clean verify \
+         -Dcucumber.plugin="pretty, html:target/cucumber-report-html"
        # run: mvn clean test
 
       # 4. Upload Cucumber reports as artifacts
-      #- name: Upload Cucumber JSON report
-      #   uses: actions/upload-artifact@v4
-      #  with:
-      #      name: cucumber-json-report
-      #      path: target/cucumber-report.json
+      - name: Upload Cucumber HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-json-report
+          path: target/cucumber-report-html
 
       # 5. Hosting automation report on GitHub Pages with GitHub Actions
       - name: Deploy pages
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           branch: gh-pages
-          folder: ./test-report
+          folder: ./target/cucumber-report-html
