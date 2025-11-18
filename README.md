@@ -3,7 +3,7 @@
 
 Dependencies added:
 ```text
-    spring-boot-starter-web, spring-boot-devtools, Rest Assured, Hamcrest Matchers, TestNG, Gson library, io.cucumber, apache.poi, jackson library, Lombok
+    spring-boot-starter-web, spring-boot-devtools, Rest Assured, Hamcrest Matchers, TestNG, Gson library, io.cucumber and apache.poi libraries, jackson library, Lombok, maven-cucumber-reporting, maven-surefire-plugin, surefire-junit47
 ```
 
 
@@ -20,7 +20,7 @@ Dependencies added:
 <br>
 
 - Jira REST APIs test
-  	> Issue creation, update, GET and delete request, send File Attachment
+  	> Issue creation, update, read and delete request, send File Attachment
 
 Run tests:
    
@@ -42,9 +42,11 @@ Run tests:
 
 - Updated RunnerTest class with plugin configuration
 - Added maven-cucumber-reporting plugin to pom.xml
-- Ran mvn clean test to generate the Cucumber report file
+- Ran mvn clean verify to generate the Cucumber report file
 
-![testReport](target/cucumber-report-html/cucumber-html-reports/feature-overview.html)
+![cucumberTestReporting](assets/cucumberTestReporting.PNG)
+
+[cucumber-html-reports](target/cucumber-report-html/cucumber-html-reports/feature-overview.html)
 
 ### Tips:
 
@@ -55,5 +57,5 @@ Run tests:
     > Maven Surefire plugin confused about which framework to use
       - Required both dependencies in this project
         - Solution: Force the Surefire provider to explicitly configure the maven-surefire-plugin to use JUnit
-        - included org.apache.maven.surefire dependency in pom.xml plugin
+        - included org.apache.maven.surefire dependency in pom.xml plugin section
 

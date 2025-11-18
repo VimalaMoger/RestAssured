@@ -6,20 +6,39 @@ on:
       - main
   pull_request:
     branches: ["main"]
+  workflow_dispatch: # Allow manual trigger
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout source code
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # 2. Set up Java
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           java-version: '25'
           distribution: 'adopt'
 
+      # 3. Install dependencies & run tests
       - name: Run API tests
-        run: mvn clean test
+        run: mvn clean verify
+       # run: mvn clean test
+
+      # 4. Upload Cucumber reports as artifacts
+      #- name: Upload Cucumber JSON report
+      #   uses: actions/upload-artifact@v4
+      #  with:
+      #      name: cucumber-json-report
+      #      path: target/cucumber-report.json
+
+      # 5. Hosting automation report on GitHub Pages with GitHub Actions
+      - name: Deploy pages
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          branch: gh-pages
+          folder: ./test-report
