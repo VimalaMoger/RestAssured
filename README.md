@@ -46,7 +46,7 @@ Run tests:
 
 ![cucumberTestReporting](assets/cucumberTestReporting.PNG)
 
-[cucumber-html-reports](https://vimalamoger.github.io/RestAssured/cucumber-html-reports/feature-overview.html)
+[cucumber-html-reports](https://vimalamoger.github.io/restAssured/cucumber-html-reports/feature-overview.html)
 
 ### Tips:
 
